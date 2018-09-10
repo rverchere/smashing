@@ -25,10 +25,10 @@ module Dashing
       end
     end
 
-    desc "new PROJECT_NAME", "Sets up ALL THE THINGS needed for your dashboard project."
+    desc "new PROJECT_NAME [--skip]", "Sets up ALL THE THINGS needed for your dashboard project (skip overwrite)."
     def new(name)
       @name = Thor::Util.snake_case(name)
-      directory(:project, @name)
+      directory(:project, @name, :skip => args.include?('--skip'))
     end
 
     desc "generate (widget/dashboard/job) NAME", "Creates a new widget, dashboard, or job."
