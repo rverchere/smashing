@@ -26,7 +26,7 @@ module Dashing
     end
 
     desc "new PROJECT_NAME [--skip]", "Sets up ALL THE THINGS needed for your dashboard project (skip overwrite)."
-    def new(name)
+    def new(name, *args)
       @name = Thor::Util.snake_case(name)
       directory(:project, @name, :skip => args.include?('--skip'))
     end
